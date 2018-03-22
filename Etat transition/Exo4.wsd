@@ -1,0 +1,44 @@
+@startuml
+[*] -> CarteInsérée : ETAT INITIAL
+state CarteInsérée{
+    state PavéSaisie{
+        state   CodeSaisi{
+            CodeSaisi : saisirCode
+        }
+        state CodeBon{
+            CodeBon: afficherListeMontants
+        }
+        state DistributionEnCours{
+            DistributionEnCours : rendreCarte
+            DistributionEnCours : distributionBillets
+        }
+        CodeSaisi --> CodeBon
+        CodeBon --> DistributionEnCours : choixMontant
+    }
+}
+state CarteEjectée
+CarteInsérée --> CarteEjectée : retirerCarte
+CarteEjectée -> [*] : ETAT FINAL
+@enduml
+
+@startuml
+[*] -> CarteInsérée : ETAT INITIAL
+state CarteInsérée{
+    state PavéSaisie{
+        state   CodeSaisi{
+            CodeSaisi : saisirCode
+        }
+        state CodeErroné
+        state CodeBon{
+            CodeBon : afficherListeMontants
+        }
+        state DistributionEnCours{
+            DistributionEnCours : rendreCarte
+            DistributionEnCours : distributionBillets
+        }
+        CodeSaisi --> CodeBon
+        CodeBon --> DistributionEnCours : choixMontant
+        CodeSaisi -> CodeErroné
+        CodeErroné -> CodeSaisi
+    }
+@enduml

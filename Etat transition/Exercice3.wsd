@@ -1,0 +1,32 @@
+@startuml
+[*] -> Masquer : ETAT INITIAL : instancier
+state Afficher{
+    state Normale{
+        state Déplacer
+        state Redimensionner
+    }
+    state Réduite
+    state Agrandir
+
+    Déplacer --> Redimensionner
+    Redimensionner --> Déplacer
+
+    Agrandir --> Normale
+    Normale --> Agrandir
+
+    Agrandir --> Réduite
+    Réduite --> Agrandir
+
+    Normale --> Réduite
+    Réduite --> Normale
+    
+}
+state Masquer
+state Détruire
+Masquer --> Afficher
+Afficher --> Masquer
+
+Afficher --> Détruire
+Masquer --> Détruire
+Détruire -> [*] : ETAT FINAL
+@enduml
