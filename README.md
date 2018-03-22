@@ -1,3 +1,3 @@
-# Etat transition #
+# Diagrammes Etat transition #
 
- Ce TP regroupe plusieurs exemples de schémas d'état transition.
+ Ce TP regroupe plusieurs exemples de diagrammes d'état transition.
